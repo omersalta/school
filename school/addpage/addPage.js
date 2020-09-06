@@ -10,6 +10,12 @@ window.onload = () => {
     laodTableData(studentData);
 };
 
+var sub = "<?php  $submit; ?>";
+
+if (sub=="sucsess"){
+    document.getElementsByName("submit-suc").innerHTML="eklendi";
+}
+
 function laodTableData(studentData) {
     const tableBody = document.getElementById("tableData");
     let dataHtml = '';

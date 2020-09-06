@@ -1,0 +1,153 @@
+<html lang="tr">
+    <head>
+
+      <title>Show Page</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- CSS --> 
+
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --> 
+      <link href="bootstrap.css" rel="stylesheet">
+      <link href="showPage.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+      <!-- JS --> 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="showPage.js"></script>
+      <!-- normally, JS pages are placed at the bottom of the body in complex pages bec. optimization of page's opening time --> 
+      <style> body{
+        background-image: url("http://localhost/school/images/back.jpg");
+        background-repeat: no-repeat;
+      }</style> 
+
+    </head>
+      
+    <body>
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-sm-2 bg-success">
+            <div class="container">
+              <h2>Vertical Nav</h2>
+              <p>Use the .flex-column class to create a vertical nav:</p>
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-sm-7 bg-warning">
+            <table action="./showPage.php" method="POST" class=" table tablee table-dark table-striped">
+            <!--   --> 
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Number</th>
+                    <th>Class</th>
+                    <th>gender</th>
+                    <th>Birth date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tableData"></tbody>
+          </table>
+          <div class="container">        
+            <table action="./showPage.php" method="POST" class=" table tablee table-dark table-striped">
+              <!--   --> 
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Surname</th>
+                      <th>Number</th>
+                      <th>Class</th>
+                      <th>gender</th>
+                      <th>Birth date</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody id="tableData"></tbody>
+            </table>
+          </div>
+          <div class="col">
+        </div>
+    <!-- Modal -->
+      <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <form>
+                    <table action="./editPage.php" method="POST" class="table table-dark table-striped" >
+                        <thead>
+                            <tr>
+                                <th >Name</th>
+                                <th >Surname</th>
+                                <th >Number</th>
+                                <th >Class</th>
+                                <th >gender</th>
+                                <th >Birth date</th>
+                            </tr>  
+                        </thead>
+                        <tbody>
+                            <tr >
+                                <th class="tabl"><input type="text" name="name" required></th>
+                                <th ><input type="text" name="surName" required></th>
+                                <th><input type="Number" name="numberr" required></th>
+                                <th><div class="select" style="width:83px;">
+                                    <select id="editClassNumber">
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                      <option value="6">6</option>
+                                      <option value="7">7</option>
+                                      <option value="8">8</option>
+                                    </select>
+                                    <select id="editClassLetter">
+                                      <option value="A">A</option>
+                                      <option value="B">B</option>
+                                      <option value="C">C</option>
+                                      <option value="D">D</option>
+                                    </select>
+                                  </div></th>
+                                <th><input type="radio" name="genderM" value="M" required>M
+                                    <input type="radio" name="genderF" value="F" required>F</th>
+                                <th><input type="date" id="editDate" name="birthDate" required></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                  </form>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+          </div>
+        </div>
+      </div> 
+
+    </body>
+</html>
