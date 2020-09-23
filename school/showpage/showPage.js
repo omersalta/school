@@ -238,7 +238,7 @@ function randomGenerate(){
         loadTables('dont');
     };
     console.log(number);
-    if(number === "Delete"){
+    if(number === "delALL"){
         console.log("Delete içindeyiz");
         xhttp.open("POST", "createOrDelete.php?operation=del&number=All", true);
         xhttp.send(); 
