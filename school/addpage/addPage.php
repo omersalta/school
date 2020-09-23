@@ -3,10 +3,18 @@ $name = $_POST['name'];
 $surname = $_POST['surname'];
 $numberr = $_POST['numberr'];
 $gender = $_POST['gender'];
-#$birthDate = $_POST['birthDate'];
+$classN = $_POST['classN'];
+$classL = $_POST['classL'];
+$class = "$classN$classL";
 $birthDate = date('Y-m-d', strtotime($_POST['birthDate']));
 
-if (!empty($name) || !empty($surname) || !empty($numberr) || !empty($gender) || !empty($birthDate)) {
+
+if($numberr > 10000){
+    header("Location: ../addpage/addPage.html?S=no");
+    exit;
+}
+
+if (!empty($name) || !empty($surname) || !empty($numberr) || !empty($class) || !empty($gender) || !empty($birthDate)) {
  $host = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
@@ -17,7 +25,7 @@ if (!empty($name) || !empty($surname) || !empty($numberr) || !empty($gender) || 
      die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
     } else {
      $SELECT = "SELECT numberr From students Where numberr = ? Limit 1";
-     $INSERT = "INSERT Into students (name, surname, numberr, gender, birthDate) values(?, ?, ?, ?, ?)";
+     $INSERT = "INSERT Into students (name, surname, numberr, class, gender, birthDate) values(?, ?, ?, ?, ?, ?)";
      //Prepare statement
      $stmt = $conn->prepare($SELECT);
      $stmt->bind_param("i", $numberr);
@@ -28,11 +36,13 @@ if (!empty($name) || !empty($surname) || !empty($numberr) || !empty($gender) || 
      if ($rnum==0) {
       $stmt->close();
       $stmt = $conn->prepare($INSERT);
-      $stmt->bind_param("sssss", $name, $surname, $numberr, $gender, $birthDate);
+      $stmt->bind_param("ssssss", $name, $surname, $numberr, $class, $gender, $birthDate);
       $stmt->execute();
       echo "New record inserted sucessfully";
+      header("Location: ../addpage/addPage.html?S=yes");
      } else {
-      echo "Someone already students using this email";
+      echo "Someone already using this number";
+      header("Location: ../addpage/addPage.html?S=no");
      }
      $stmt->close();
      $conn->close();
@@ -41,5 +51,4 @@ if (!empty($name) || !empty($surname) || !empty($numberr) || !empty($gender) || 
  echo "All field are required";
  die();
 }
-header("Location: ../addpage/addPage.html?submit=sucsess");
 ?>
